@@ -3,7 +3,7 @@ MAINTAINER Ian Tumulak <edden87@gmail.com>
 
 # Install Apache and other tools
 RUN apt update && \
-    apt install -y apache2 apache2-utils curl vim
+    apt install -y apache2 apache2-utils curl vim git zsh
 
 # Install tzadata in advance and its workaround
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
