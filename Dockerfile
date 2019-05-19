@@ -5,6 +5,18 @@ MAINTAINER Ian Tumulak <edden87@gmail.com>
 RUN apt update && \
     apt install -y apache2 apache2-utils curl vim git zsh
 
+# Setup zsh
+RUN chsh -s $(which zsh)
+
+# Setup oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Add zsh plugins
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting && source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+COPY .zshrc /root/.zshrc
+
 # Install tzadata in advance and its workaround
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 
