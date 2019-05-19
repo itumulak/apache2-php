@@ -3,7 +3,7 @@ MAINTAINER Ian Tumulak <edden87@gmail.com>
 
 # Install Apache and other tools
 RUN apt update && \
-    apt install -y apache2 apache2-utils curl vim git zsh
+    apt install -y apache2 apache2-utils curl vim python-pip git zsh
 
 # Setup zsh
 RUN chsh -s $(which zsh)
@@ -17,7 +17,10 @@ RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zs
 
 COPY .zshrc /root/.zshrc
 
-# Install tzadata in advance and its workaround
+#Add Pygments (pcat)
+RUN pip install pygments && alias pcat='pygmentize -f terminal256 -O style=monokai -g'
+
+# Install tzadata in advance
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 
 # Install PHP 7.3

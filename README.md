@@ -1,8 +1,8 @@
 # Apache2 PHP7
-This image install Apache2 and PHP7.x from Ubuntu 18.04 image. Other tools installed:
+This image install Apache2 and PHP7.x from Ubuntu 18.04 image and other tools in the workflow.
+
 - vim
 - curl
 - git
 - oh-my-zsh
-
-This Docker image is meant as a layer for WordPress development.
+- pygments (pcat)
