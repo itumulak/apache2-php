@@ -11,5 +11,8 @@ else
     echo "=> Apache is already configured"
 fi
 
-echo "=> Apache started..."
-/usr/sbin/apache2ctl -D FOREGROUND
+echo "=> Starting Apache..."
+service apache2 start
+
+echo "=> Initiate zsh..."
+zsh
