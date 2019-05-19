@@ -12,13 +12,13 @@ RUN chsh -s $(which zsh)
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Add zsh plugins
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting && source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 COPY .zshrc /root/.zshrc
 
-#Add Pygments (pcat)
-RUN pip install pygments && alias pcat='pygmentize -f terminal256 -O style=monokai -g'
+#Add Pygments
+RUN pip install pygments
 
 # Install tzadata in advance
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
