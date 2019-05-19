@@ -12,7 +12,4 @@ else
 fi
 
 echo "=> Starting Apache..."
-service apache2 start
-
-echo "=> Initiate zsh..."
-zsh
+/usr/sbin/apache2ctl -D FOREGROUND
