@@ -19,6 +19,7 @@ COPY .zshrc /root/.zshrc
 
 #Add Pygments
 RUN pip install pygments
+# RUN alias pcat='pygmentize -f terminal256 -O style=monokai -g' # Alias does not work non-interactive. Must find a workaround/hack.
 
 # Install tzadata in advance
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
